@@ -39,7 +39,10 @@ export default function Playground({
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-full">
+    <div className="flex flex-col items-center justify-center h-full" onClick={() => {
+      toggleMicrophone();
+      onConnect(roomState === ConnectionState.Disconnected);
+    }}>
       <AgentFaceVisualizer
         state="speaking"
         barWidth={30}
@@ -51,18 +54,6 @@ export default function Playground({
         borderRadius={12}
         gap={16}
       />
-      <button 
-        onClick={toggleMicrophone}
-        className="mt-4 text-3xl"
-      >
-        {localParticipant.isMicrophoneEnabled ? <FaMicrophone /> : <FaMicrophoneSlash />}
-      </button>
-      <button
-        onClick={() => onConnect(roomState === ConnectionState.Disconnected)}
-        className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        {roomState === ConnectionState.Connected ? 'Disconnect' : 'Connect'}
-      </button>
     </div>
   );
 }
