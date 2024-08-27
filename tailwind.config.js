@@ -67,7 +67,21 @@ module.exports = {
       },
       boxShadow: {
         ...customShadows,
-      }
+      },
+      keyframes: {
+        blink: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
+        },
+        pupilMove: {
+          '0%, 100%': { transform: 'translate(0, 0)' },
+          '50%': { transform: 'translate(-10%, 10%)' },
+        },
+      },
+      animation: {
+        blink: 'blink 0.2s',
+        pupilMove: 'pupilMove 3s infinite',
+      },
     }
   },
   plugins: [],
